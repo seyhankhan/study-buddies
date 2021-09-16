@@ -20,7 +20,7 @@ customersTable = Table(
 )
 
 studyBuddies = customersTable.all(view="Study Buddies")
-if studyBuddies < 2:
+if len(studyBuddies) < 2:
   # TODO
   pass
 
@@ -63,4 +63,4 @@ if len(studyBuddies) % 2 == 1:
 
 
 
-print(dumps(pairs, indent=3))
+print(dumps(pairs, indent=2))
