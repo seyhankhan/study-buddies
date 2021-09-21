@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{% block title %}Opting out{% endblock %}
+
+{% block body %}
+	<h2>you've successfully opted out, {{ name }}.</h2>
+	<hr>
+	<a href="/join?user={{ recordID }}">Click here to rejoin</a>
+{% endblock %}

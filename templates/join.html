@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block body %}
+<form method="POST" action="/join?user={{ recordID }}">
+	<div>
+		<label for="name">Name</label>
+		<input type="text" name="name" value="{{ name }}" disabled required>
+	</div>
+	<br>
+	<div>
+		<label for="email">Email</label>
+		<input type="text" name="email" value="{{ email }}" disabled required>
+	</div>
+	<br>
+	<div>
+		<label for="gender">Gender:</label>
+		<select name="gender" required>
+			<option value="">Your gender</option>
+			<option value="Male">Male</option>
+			<option value="Female">Female</option>
+			<option value="Non-Binary">Non-binary</option>
+		</select>
+	</div>
+
+	<div>
+		<label for="genders-to-pair-with">Genders to pair with:</label>
+		<select name="genders-to-pair-with" multiple required>
+			<option value="Male">Male</option>
+			<option value="Female">Female</option>
+			<option value="Non-Binary">Non-binary</option>
+		</select>	
+	</div>
+
+	<br>
+	<button>Submit</button>
+</form>
+
+{% endblock %}
