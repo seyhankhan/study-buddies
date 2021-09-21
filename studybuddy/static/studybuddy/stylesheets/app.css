@@ -27,6 +27,15 @@ h1 {
 	background: #fafafad3;
 }
 
+#slogan {
+	color:#fafafa;
+	font-style: italic;
+	text-align: center;
+	position: fixed;
+	bottom: 32px;
+	width: 100%;
+}
+
 .asteriskField {
 	display: none;
 }

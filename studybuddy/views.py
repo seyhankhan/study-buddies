@@ -3,10 +3,7 @@
 ############ auto match people up every month uniquely according to chosen genders and monthly prompts
 ############ September 2021
 
-from os import environ
-
 from django.shortcuts import redirect, render
-from pyairtable import Table
 
 from .forms import JoinForm
 from .models import Customer
@@ -14,7 +11,7 @@ from .models import Customer
 #################################### INDEX ####################################
 
 def index(request):
-	return redirect("https://www.sexhomeworksociety.com/")
+	return redirect("https://www.sexhomeworksociety.com/Sex Homework Society.pdf#page=2")
 
 #################################### JOIN #####################################
 
@@ -122,4 +119,3 @@ def rePair(request):
 		customers.update(customer['id'], {
 			'To be re-paired': True,
 		})
-
