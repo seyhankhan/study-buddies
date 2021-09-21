@@ -41,15 +41,12 @@ def join(request):
 			raise(e)
 	
 	if request.method == "GET":
-		email = customer['fields']['Email-test']
-		endIndex = min(13, email.index('@') + 1)
-		form = JoinForm(initial={
-			'name': customer['fields']['First Name'],
-			'email': email[:endIndex] + '*' * 10,
-		})
+		form = JoinForm()
 		return render(request, 'studybuddy/join.html', {
 			"form": form,
-			"recordID": customer.get('id'),
+			'name': customer['fields']['First Name'] + ' ' + customer['fields']['Last Name'],
+			'email': customer['fields']['Email-test'],
+			"recordID": customer['id'],
 		})
 
 	# POST
@@ -97,32 +94,32 @@ def optout(request):
 
 ################################### RE PAIR ###################################
 
-# def rePair(request):
-# 	if not request.GET.get('user'):
-# 		return render(request, 'studybuddy/error.html', {
-# 			'error': "no user given"
-# 		})
+def rePair(request):
+	if not request.GET.get('user'):
+		return render(request, 'studybuddy/error.html', {
+			'error': "no user given"
+		})
 
-# 	try:
-# 		customers = Customer()
-# 		customer = customers.get(request.GET.get('user'))
-# 	except Exception as e:
-# 		if e.response.status_code == 404:
-# 			print(e)
-# 			return render(request, 'studybuddy/error.html', {
-# 				"error": "cant find this record",
-# 			})
-# 		else:
-# 			raise(e)
+	try:
+		customers = Customer()
+		customer = customers.get(request.GET.get('user'))
+	except Exception as e:
+		if e.response.status_code == 404:
+			print(e)
+			return render(request, 'studybuddy/error.html', {
+				"error": "cant find this record",
+			})
+		else:
+			raise(e)
 	
-# 	if request.method == 'GET':
-# 		return render(request, 'studybuddy/re-pair.html', {
-# 			"name": customer['fields']['First Name'],
-# 			"recordID": customer['id'],
-# 		})
-# 	# POST
-# 	else:
-# 		customers.update(customer['id'], {
-# 			'To be re-paired': True,
-# 		})
+	if request.method == 'GET':
+		return render(request, 'studybuddy/re-pair.html', {
+			"name": customer['fields']['First Name'],
+			"recordID": customer['id'],
+		})
+	# POST
+	else:
+		customers.update(customer['id'], {
+			'To be re-paired': True,
+		})
 

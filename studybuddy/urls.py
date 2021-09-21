@@ -8,5 +8,5 @@ urlpatterns = [
     path("join", views.join, name="join"),
     path("join-success", views.joinSuccess, name="join-success"),
     path("optout", views.optout, name="optout"),
-    # path("re-pair", views.rePair, name="re-pair"),
+    path("re-pair", views.rePair, name="re-pair"),
 ]

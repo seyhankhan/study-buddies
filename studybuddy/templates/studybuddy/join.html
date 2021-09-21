@@ -1,12 +1,71 @@
 {% extends "studybuddy/layout.html" %}
 
+{% load crispy_forms_tags %}
+
 {% block title %}Welcome{% endblock %}
+{% block pageTitle %}Welcome to Study Buddy{% endblock %}
 
 {% block body %}
+
+
 <form method="POST" action="{% url 'join' %}?user={{ recordID }}">
 	{% csrf_token %}
-	{{ form }}
-	<input type="submit" value="Submit">
+	<p>
+		<b>Name:</b> {{ name }}
+		<br>
+		<b>Email:</b> {{ email }}
+	</p>
+	
+	<div class="form-check form-check-inline">
+		{{ form.gender|as_crispy_field }}
+	</div>
+
+	<br>
+	<br>
+
+	<div class="form-check">
+		{{ form.gendersToPairWith|as_crispy_field }}
+	</div>
+
+	<br>
+
+	<div class="form-check">
+		<button type="submit" class="btn btn-primary">Join</button>
+	</div>
 </form>
+
+<script>
+	(function() {
+		const form = document.querySelector('form');
+		const checkboxes = form.querySelectorAll('input[type=checkbox]');
+		const checkboxLength = checkboxes.length;
+		const firstCheckbox = checkboxLength > 0 ? checkboxes[0] : null;
+
+		function init() {
+			if (firstCheckbox) {
+				for (let i = 0; i < checkboxLength; i++) {
+					checkboxes[i].addEventListener('change', checkValidity);
+				}
+
+				checkValidity();
+			}
+		}
+
+		function isChecked() {
+			for (let i = 0; i < checkboxLength; i++) {
+				if (checkboxes[i].checked) return true;
+			}
+
+			return false;
+		}
+
+		function checkValidity() {
+			const errorMessage = !isChecked() ? 'At least one checkbox must be selected.' : '';
+			firstCheckbox.setCustomValidity(errorMessage);
+		}
+
+		init();
+	})();
+</script>
 
 {% endblock %}

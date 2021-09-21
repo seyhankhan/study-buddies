@@ -13,11 +13,43 @@
     <meta name="author" content="Seyhan Van Khan">
     <meta name="description" property="og:description" content="SHS Study Buddy Description">
 
-    <title>{% block title %}{% endblock %} | Study Buddy - Sex Homework Society</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+		<style type="text/css">
+			body {
+				font-family: 'Open Sans', sans-serif;
+				font-weight: 400;
+				color: #333333;
+				background-image:
+					linear-gradient(to bottom, rgba(35, 31, 32, 0.4), rgba(35, 31, 32, 0.4)),
+					url("https://femtech.live/wp-content/uploads/2021/02/dainis-graveris-To4pii1Dn6o-unsplash-min.jpg");
+				background-size: cover;
+			}
+			h1 {
+				font-weight: 300;
+			}
+			#container {
+				width: 600px;
+				padding: 24px 32px;
+				margin: auto;
+				margin-top: 120px;
+				border-radius: 8px;
+				background: #F2F2F2;
+				
+			}
+		</style>
+
+    <title>{{ title }} | Study Buddy - Sex Homework Society</title>
   <head>
 
   <body>
-    {% block body %}
-    {% endblock %}
+		<div id="container">
+			<h1 class="mt-2">{% block pageTitle %}{% endblock %}</h1>
+			<hr class="mt-0 mb-4">
+			{% block body %}
+			{% endblock %}
+    </div>
   </body>
 </html>

@@ -1,9 +1,10 @@
 {% extends "studybuddy/layout.html" %}
 
 {% block title %}Opting out{% endblock %}
+{% block pageTitle %}Study Buddy{% endblock %}
 
 {% block body %}
-	<h2>you've successfully opted out, {{ name }}.</h2>
+	<h3>you've successfully opted out, {{ name }}.</h3>
 	<hr>
 	<a href="{% url 'join' %}?user={{ recordID }}">Click here to rejoin</a>
 {% endblock %}
