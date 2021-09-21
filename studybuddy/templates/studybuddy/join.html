@@ -6,30 +6,27 @@
 {% block pageTitle %}Welcome to Study Buddy{% endblock %}
 
 {% block body %}
-
-
 <form method="POST" action="{% url 'join' %}?user={{ recordID }}">
 	{% csrf_token %}
 	<p>
-		<b>Name:</b> {{ name }}
+		<b>Your name:</b> {{ name }}
 		<br>
-		<b>Email:</b> {{ email }}
+		<b>Your email:</b> {{ email }}
 	</p>
 	
-	<div class="form-check form-check-inline">
+	<div class="form-check removePaddingLeft">
 		{{ form.gender|as_crispy_field }}
 	</div>
 
 	<br>
-	<br>
 
-	<div class="form-check">
+	<div class="form-check removePaddingLeft">
 		{{ form.gendersToPairWith|as_crispy_field }}
 	</div>
 
 	<br>
 
-	<div class="form-check">
+	<div class="form-check removePaddingLeft">
 		<button type="submit" class="btn btn-primary">Join</button>
 	</div>
 </form>

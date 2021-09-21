@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+	color: #333333;
+	background-image:
+		linear-gradient(to bottom, rgba(35, 31, 32, 0.4), rgba(35, 31, 32, 0.4)),
+		url("https://femtech.live/wp-content/uploads/2021/02/dainis-graveris-To4pii1Dn6o-unsplash-min.jpg");
+	background-size: cover;
+}
+
+h1 {
+	font-weight: 300;
+}
+
+.form-check-label {
+	font-weight: 400;
+}
+
+#container {
+	width: 600px;
+	padding: 40px 52px;
+	margin: auto;
+	margin-top: 120px;
+	border-radius: 8px;
+	background: #fafafad3;
+}
+
+.asteriskField {
+	display: none;
+}
+
+.removePaddingLeft {
+	padding-left: 0;
+	font-weight: bold;
+}
