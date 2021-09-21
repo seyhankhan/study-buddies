@@ -2,8 +2,7 @@ from datetime import datetime
 from os import environ
 from pytz import timezone
 
-from datetimes import getCurrentDatetime
-from emails import Email, sendEmail, sendEmails
+from emails import Email, sendEmails
 from pairs import getUniquePairs
 
 now = timezone("UTC").localize(datetime.now())
