@@ -62,14 +62,17 @@ def sendPairsEmails():
   for pair in pairs:
     for buddy in pair:
       emails.append(Email(
-          to=buddy['Email-test'],
-          templateVariables={
-              "name1": pair[0]['First Name'],
-              "name2": pair[1]['First Name'],
-              "email1": pair[0]['Email-test'],
-              "email2": pair[1]['Email-test'],
-          },
-          templateID=environ.get("SENDGRID_SHS_MONTHLYSTUDYBUDDY_TEMPLATEID"),
+				to=buddy['fields']['Email-test'],
+				templateVariables={
+					"name1": pair[0]['fields']['First Name'],
+					"name2": pair[1]['fields']['First Name'],
+					"email1": pair[0]['fields']['Email-test'],
+					"email2": pair[1]['fields']['Email-test'],
+					"recordID": buddy['id'],
+				},
+				templateID=environ.get("SENDGRID_SHS_MONTHLYSTUDYBUDDY_TEMPLATEID"),
       ))
   print(emails)
   sendEmail(emails[0])
+	
+sendPairsEmails()

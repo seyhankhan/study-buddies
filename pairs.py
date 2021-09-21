@@ -79,16 +79,16 @@ def getUniquePairs():
   pairs = []
   for i in range(0, len(studyBuddies) - len(studyBuddies) % 2, 2):
     pairs.append([
-        studyBuddies[i]["fields"],
-        studyBuddies[i + 1]["fields"],
+        studyBuddies[i],
+        studyBuddies[i + 1],
     ])
 
   # if odd number of people, put the odd guy in the last group
   if len(studyBuddies) % 2 == 1:
-    pairs[-1].append(studyBuddies[-1]['fields'])
+    pairs[-1].append(studyBuddies[-1])
 
   print(dumps(
-      [[buddy['First Name'] for buddy in pair] for pair in pairs],
+      [[buddy['fields']['First Name'] for buddy in pair] for pair in pairs],
       indent=2
   ))
   print("failed shuffle attempts:", failedShuffles)
