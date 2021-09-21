@@ -1,4 +1,5 @@
 Django==3.2.7
+django-crispy-forms==1.12.0
 django-on-heroku
 gunicorn==20.1.0
 pyairtable==1.0.0
