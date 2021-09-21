@@ -74,5 +74,3 @@ def sendPairsEmails():
       ))
   print(emails)
   sendEmail(emails[0])
-	
-sendPairsEmails()
