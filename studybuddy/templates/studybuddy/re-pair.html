@@ -1,0 +1,12 @@
+{% extends "studybuddy/layout.html" %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block body %}
+<form method="POST" action="{% url 're-pair' %}?user={{ recordID }}">
+	{% csrf_token %}
+	Sorry {{ name }}, your pair is useless! Click below to get re-paired.
+	<input type="submit" value="Re-pair me">
+</form>
+
+{% endblock %}

@@ -1,4 +1,5 @@
-flask==2.0.1
+Django==3.2.7
+django-on-heroku
 gunicorn==20.1.0
 pyairtable==1.0.0
 sendgrid==6.8.1

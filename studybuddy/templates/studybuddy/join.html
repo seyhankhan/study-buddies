@@ -1,0 +1,12 @@
+{% extends "studybuddy/layout.html" %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block body %}
+<form method="POST" action="{% url 'join' %}?user={{ recordID }}">
+	{% csrf_token %}
+	{{ form }}
+	<input type="submit" value="Submit">
+</form>
+
+{% endblock %}
