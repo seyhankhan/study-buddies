@@ -1,4 +1,0 @@
-- code calculation of monthly unique matches while matching gender choices
-- code auto monthly emails with custom forms to opt out & report non responsive people
-- code a joining form that automatically adds to the database
-- code auto emailing the joining forms calculated with end dates of future courses
