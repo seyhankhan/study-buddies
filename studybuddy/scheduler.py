@@ -1,21 +1,21 @@
 from datetime import datetime
-from json import dumps
 from os import environ
 from pytz import timezone
 
-from pyairtable.formulas import match
-
 from models import Customer, Offering
 from emails import Email, sendEmails
-from pairs import getUniquePairs
+from pairs import getUniquePairs, savePairs
 
 now = timezone("UTC").localize(datetime.now())
+DEBUG = True
 
 ############################# EMAIL MONTHLY PAIRS #############################
 
 # Runs 1st day of every month, at xx:xx
 if now.day == 1:
 	pairs = getUniquePairs()
+	savePairs(pairs)
+
 	emails = []
 	for pair in pairs:
 		for buddy in pair:
@@ -34,7 +34,7 @@ if now.day == 1:
 			))
 	print(len(emails), 'monthly pairs emails')
 
-	if settings.DEBUG:
+	if DEBUG:
 		sendEmails(emails[:2])
 	else:
 		sendEmails(emails)
@@ -68,7 +68,7 @@ for customer in customers:
 
 print(len(emails), 'invitation emails')
 
-if settings.DEBUG:
+if DEBUG:
 	sendEmails(emails[:2])
 else:
 	sendEmails(emails)

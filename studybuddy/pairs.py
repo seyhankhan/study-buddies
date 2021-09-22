@@ -76,3 +76,19 @@ def getUniquePairs():
   print("failed shuffle attempts:", failedShuffles)
 
   return pairs
+
+
+def savePairs(pairs):
+	customers = Customer()
+
+	for pair in pairs:
+		# create hash that links every id in the group to their previous pairs. If no previous pairs, empty list
+		previousPairs = {buddy['id'] : buddy['fields']['Pairs'] if 'Pairs' in buddy['fields'] else [] for buddy in pair}
+		# for each person in this group
+		for id in previousPairs:
+			# create list of IDs to add to this person's list (everyone thats not him)
+			newPairs = [pairID for pairID in previousPairs if pairID != id]
+			# update list of previous pairs
+			customers.update(id, {
+				'Pairs': previousPairs[id] + newPairs,
+			})
