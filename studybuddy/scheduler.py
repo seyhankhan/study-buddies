@@ -27,8 +27,8 @@ if now.day == 1:
 		for buddy in pair:
 			pairIDs = [ human['id'] for human in pair if human['id'] != buddy['id'] ]
 			pairParams = "pair1=" + pairIDs[0] + (f"&pair2={pairIDs[1]}" if len(pair) == 3 else "")
-			deadline = now.replace(day=8).timestamp()
-			rePairLink = f"studybuddy.herokuapp.com/repair?user={ buddy['id'] }&timestamp={ deadline }&{ pairParams }"
+			deadline = int(now.replace(day=8).timestamp())
+			rePairLink = f"http://studybuddy.sexhomeworksociety.com/re-pair?user={ buddy['id'] }&deadline={ deadline }&{ pairParams }"
 			print(rePairLink)
 
 			emails.append(Email(
@@ -48,7 +48,7 @@ if now.day == 1:
 	print(len(emails), 'monthly pairs emails')
 
 	if DEBUG:
-		sendEmails(emails[:3])
+		sendEmails(emails[-3:])
 	else:
 		sendEmails(emails)
 
