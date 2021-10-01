@@ -1,29 +1,29 @@
 from os import environ
 
-from django.conf import settings
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail, SendAt
 
+IGNORE_TIMESTAMPS = True
 
-def Email(to, templateID, templateVariables, timestamp=None):
+def Email(to, templateID, templateData, timestamp=None):
 	email = Mail(
 		from_email=environ.get("SHS_EMAIL"),
 		to_emails=to
 	)
 	# pass custom values for our HTML placeholders
 	email.template_id = templateID
-	email.dynamic_template_data = templateVariables
+	email.dynamic_template_data = templateData
 
-	if timestamp and not settings.DEBUG:
+	if timestamp and not IGNORE_TIMESTAMPS:
 		print(to, timestamp)
 		email.send_at = SendAt(timestamp)
 	
 	return email
 
 
-def sendEmail(email, sendgridClient=SendGridAPIClient(environ.get("SENDGRID_SHS_KEY"))):
+def sendEmail(email, client=SendGridAPIClient(environ.get("SENDGRID_SHS_KEY"))):
 	try:
-		response = sendgridClient.send(email)
+		response = client.send(email)
 		print("Sent to:", email.from_email)
 		print("Status Code:", response.status_code)
 		print("Body:", response.body)
@@ -35,7 +35,7 @@ def sendEmail(email, sendgridClient=SendGridAPIClient(environ.get("SENDGRID_SHS_
 
 
 def sendEmails(emails):
-	sendgridClient = SendGridAPIClient(environ.get("SENDGRID_SHS_KEY"))
+	client = SendGridAPIClient(environ.get("SENDGRID_SHS_KEY"))
 	for email in emails:
-		sendEmail(email, sendgridClient)
+		sendEmail(email, client)
 	print(len(emails), "emails sent")

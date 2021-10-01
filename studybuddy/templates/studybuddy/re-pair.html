@@ -1,13 +1,8 @@
 {% extends "studybuddy/layout.html" %}
 
-{% block title %}Re-pairing{% endblock %}
-{% block pageTitle %}I want to be re-paired!{% endblock %}
+{% block title %}Re-paired Confirmation{% endblock %}
+{% block pageTitle %}Re-pair me!{% endblock %}
 
 {% block body %}
-<form method="POST" action="{% url 're-pair' %}?user={{ recordID }}">
-	{% csrf_token %}
-	<h4>Sorry {{ name }}, your pair is useless! Click below to get re-paired.</h4>
-	<button type="submit" class="btn btn-secondary">Re-pair me</button>
-</form>
-
+	<h4>Sorry {{ name }} for your useless pair! We'll re-pair you on the 8th.</h4>
 {% endblock %}
